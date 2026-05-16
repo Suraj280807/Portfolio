@@ -13,15 +13,15 @@ export default function Contact() {
     {
       icon: Github,
       label: "GitHub",
-      value: "@surajsingpatil",
-      href: "https://github.com",
+      value: "@Suraj280807",
+      href: "https://github.com/Suraj280807",
       gradient: "from-gray-700 to-gray-900",
     },
     {
       icon: Linkedin,
       label: "LinkedIn",
       value: "Surajsing Patil",
-      href: "https://linkedin.com",
+      href: "https://www.linkedin.com/in/suraj-patil-057438372",
       gradient: "from-blue-600 to-blue-800",
     },
     {

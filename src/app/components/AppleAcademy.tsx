@@ -1,7 +1,10 @@
 import { motion } from "motion/react";
-import { Award, Users, Rocket, Heart } from "lucide-react";
+import { useState } from "react";
+import { Award, Users, Rocket, Heart, ChevronDown } from "lucide-react";
 
 export default function AppleAcademy() {
+  const [showJourney, setShowJourney] = useState(false);
+
   const values = [
     {
       icon: Heart,
@@ -128,13 +131,54 @@ export default function AppleAcademy() {
               className="text-center pt-8"
             >
               <motion.button
+                type="button"
+                aria-expanded={showJourney}
+                onClick={() => setShowJourney((current) => !current)}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-10 py-4 rounded-2xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium shadow-xl shadow-purple-500/30 hover:shadow-2xl transition-all"
+                className="group px-10 py-4 rounded-2xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium shadow-xl shadow-purple-500/30 hover:shadow-2xl transition-all inline-flex items-center gap-3"
               >
-                Learn More About My Journey
+                {showJourney ? "Hide My Journey" : "Learn More About My Journey"}
+                <ChevronDown className={`w-5 h-5 transition-transform ${showJourney ? "rotate-180" : ""}`} />
               </motion.button>
             </motion.div>
+
+            {showJourney && (
+              <motion.div
+                initial={{ opacity: 0, y: 24, height: 0 }}
+                animate={{ opacity: 1, y: 0, height: "auto" }}
+                exit={{ opacity: 0, y: 24, height: 0 }}
+                transition={{ duration: 0.45, ease: "easeOut" }}
+                className="overflow-hidden"
+              >
+                <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-6 pt-2">
+                  <div className="p-7 rounded-2xl bg-white/65 backdrop-blur-xl border border-white/80 shadow-lg">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-4">My Journey</h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      I am Surajsing Patil, a B.Tech student building my path across iOS development,
+                      AI, full-stack products, UI/UX design, and cybersecurity. I enjoy turning ideas
+                      into clean, usable experiences like Streakly, where design and engineering work together.
+                    </p>
+                  </div>
+
+                  <div className="grid sm:grid-cols-3 gap-4">
+                    {[
+                      ["Focus", "Native iOS apps, AI tools, and useful digital products."],
+                      ["Style", "Soft, modern interfaces with simple flows and clear details."],
+                      ["Goal", "Grow into a stronger product builder through real projects and collaboration."],
+                    ].map(([title, description]) => (
+                      <div
+                        key={title}
+                        className="p-5 rounded-2xl bg-white/60 backdrop-blur-xl border border-white/80 shadow-lg"
+                      >
+                        <div className="text-sm font-semibold text-blue-600 uppercase tracking-wider">{title}</div>
+                        <p className="text-sm text-gray-600 leading-relaxed mt-3">{description}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            )}
           </div>
         </motion.div>
       </div>
