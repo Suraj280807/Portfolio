@@ -72,18 +72,28 @@ export default function About() {
 
             {/* Floating skill chips */}
             <div className="flex flex-wrap justify-center gap-3 pt-6">
-              {["React", "Swift", "Python", "TypeScript", "Figma", "AI/ML", "iOS", "Security"].map((skill, index) => (
-                <motion.span
-                  key={skill}
+              {[
+                { name: "React", icon: "https://cdn.simpleicons.org/react/61DAFB" },
+                { name: "Swift", icon: "https://cdn.simpleicons.org/swift/F05138" },
+                { name: "Python", icon: "https://cdn.simpleicons.org/python/3776AB" },
+                { name: "TypeScript", icon: "https://cdn.simpleicons.org/typescript/3178C6" },
+                { name: "Figma", icon: "https://cdn.simpleicons.org/figma/F24E1E" },
+                { name: "AI/ML", icon: "https://cdn.simpleicons.org/openai/000000" },
+                { name: "iOS", icon: "https://cdn.simpleicons.org/apple/000000" },
+                { name: "Security", icon: "https://cdn.simpleicons.org/kalilinux/557C94" },
+              ].map((skill, index) => (
+                <motion.div
+                  key={skill.name}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.6 + index * 0.05, duration: 0.5 }}
-                  whileHover={{ scale: 1.1 }}
-                  className="px-5 py-2 rounded-full bg-gradient-to-r from-white/60 to-white/40 backdrop-blur-xl border border-white/60 shadow-md text-sm font-medium text-gray-700 hover:shadow-lg transition-all cursor-default"
+                  whileHover={{ scale: 1.05 }}
+                  className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/70 backdrop-blur-xl border border-white/80 shadow-sm text-sm font-semibold text-gray-800 hover:shadow-md transition-all cursor-default"
                 >
-                  {skill}
-                </motion.span>
+                  <img src={skill.icon} alt={skill.name} className="w-5 h-5 object-contain" />
+                  {skill.name}
+                </motion.div>
               ))}
             </div>
           </div>

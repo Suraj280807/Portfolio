@@ -159,18 +159,7 @@ export default function FeaturedProject() {
             </div>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.8, duration: 0.8 }}
-            className="absolute -left-8 top-1/4 hidden xl:block"
-          >
-            <div className="p-6 rounded-2xl bg-white/75 backdrop-blur-2xl border border-white/70 shadow-xl">
-              <div className="text-3xl font-bold text-cyan-600">0 to 4</div>
-              <div className="text-sm text-gray-600 mt-1">Daily habit flow</div>
-            </div>
-          </motion.div>
+
 
           <motion.div
             initial={{ opacity: 0, x: 50 }}

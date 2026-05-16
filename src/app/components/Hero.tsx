@@ -12,16 +12,22 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="space-y-8"
         >
-          {/* Name badge */}
+          {/* Name text */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/40 backdrop-blur-xl border border-white/60 shadow-lg"
+            className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/40 backdrop-blur-xl border border-white/60 shadow-lg w-max"
           >
-            <Sparkles className="w-6 h-6 text-purple-600" />
-            <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Surajsing Patil
+            <motion.span 
+              animate={{ rotate: [0, 14, -8, 14, -4, 10, 0] }}
+              transition={{ duration: 2.5, repeat: Infinity, repeatDelay: 3 }}
+              className="text-2xl lg:text-3xl origin-bottom-right"
+            >
+              👋
+            </motion.span>
+            <span className="text-2xl lg:text-3xl font-semibold text-gray-800 tracking-tight">
+              Hi, I'm <span className="font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Surajsing Patil</span>
             </span>
           </motion.div>
 
