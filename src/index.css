@@ -620,5 +620,44 @@ html.lenis {
   .sm\:flex-row { flex-direction: row !important; }
 }
 
+/* ==========================================
+   TAILWIND UTILITY BRIDGES & GROUP HOVERS
+   ========================================== */
+.opacity-0 { opacity: 0; }
+.opacity-100 { opacity: 1; }
+.whitespace-nowrap { white-space: nowrap; }
+.translate-x-2 { transform: translateX(8px); }
+
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.transition-opacity {
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.duration-300 {
+  transition-duration: 300ms;
+}
+.duration-500 {
+  transition-duration: 500ms;
+}
+
+.bg-radial-gradient {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+}
+
+/* Group Hover Bridges */
+.group:hover .group-hover\:opacity-100 {
+  opacity: 1 !important;
+}
+.group:hover .group-hover\:translate-x-0 {
+  transform: translateX(0) !important;
+}
+.group:hover .group-hover\:text-white {
+  color: #ffffff !important;
+}
+
+
 
 
