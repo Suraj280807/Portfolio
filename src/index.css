@@ -1,0 +1,624 @@
+:root {
+  /* Typography */
+  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Color Themes (Significantly brightened HSL values for premium neon visual pop) */
+  --bg-primary: #04020a;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+
+  /* Theme 1: Hero & Who I Am (Vibrant Cyan & Indigo Glow) */
+  --theme-1-glow-1: rgba(14, 165, 233, 0.45); /* Sky blue, boosted */
+  --theme-1-glow-2: rgba(99, 102, 241, 0.45); /* Indigo, boosted */
+  --theme-1-accent: #38bdf8;
+  --theme-1-gradient: linear-gradient(135deg, #00f2fe 0%, #4facfe 50%, #6366f1 100%);
+
+  /* Theme 2: Curiosity & Building (Neon Purple & Radiant Coral) */
+  --theme-2-glow-1: rgba(167, 139, 250, 0.45); /* Violet */
+  --theme-2-glow-2: rgba(244, 114, 182, 0.45); /* Radiant Pink */
+  --theme-2-accent: #c084fc;
+  --theme-2-gradient: linear-gradient(135deg, #c084fc 0%, #ff007f 50%, #ff7b00 100%);
+
+  /* Theme 3: Project Vet / SRUVO (Vivid Indigo & Electric Magenta) */
+  --theme-3-glow-1: rgba(99, 102, 241, 0.45);
+  --theme-3-glow-2: rgba(192, 132, 252, 0.45);
+  --theme-3-accent: #818cf8;
+  --theme-3-gradient: linear-gradient(135deg, #818cf8 0%, #a855f7 50%, #ec4899 100%);
+
+  /* Theme 4: Project Gardener (Botanical Emerald & Electric Teal) */
+  --theme-4-glow-1: rgba(52, 211, 153, 0.45); /* Emerald */
+  --theme-4-glow-2: rgba(45, 212, 191, 0.45); /* Teal */
+  --theme-4-accent: #34d399;
+  --theme-4-gradient: linear-gradient(135deg, #34d399 0%, #00ffcc 50%, #2dd4bf 100%);
+
+  /* Theme 5: Project Habit (Sunset Rose & Radiant Gold) */
+  --theme-5-glow-1: rgba(251, 113, 133, 0.45); /* Rose */
+  --theme-5-glow-2: rgba(251, 191, 36, 0.45); /* Golden Amber */
+  --theme-5-accent: #fb7185;
+  --theme-5-gradient: linear-gradient(135deg, #fb7185 0%, #ff7b00 50%, #fbbf24 100%);
+
+  /* Theme 6: Future & Vision (Futuristic Neon Violet & Silver Shine) */
+  --theme-6-glow-1: rgba(192, 132, 252, 0.5);
+  --theme-6-glow-2: rgba(255, 255, 255, 0.15);
+  --theme-6-accent: #e9d5ff;
+  --theme-6-gradient: linear-gradient(135deg, #c084fc 0%, #e879f9 50%, #ffffff 100%);
+
+  /* Active Theme Colors - Dynamically shifted via scroll JS */
+  --glow-1: var(--theme-1-glow-1);
+  --glow-2: var(--theme-1-glow-2);
+  --accent: var(--theme-1-accent);
+  --accent-gradient: var(--theme-1-gradient);
+}
+
+/* Reset and Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  background: none;
+  border: none;
+  color: inherit;
+  font-family: inherit;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  outline: none;
+}
+
+button:focus {
+  outline: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Custom Scrollbar - Minimal & Elegant */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(4, 2, 10, 0.5);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 99px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Selection Highlight */
+::selection {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Liquid Glass System */
+.liquid-glass {
+  background: rgba(255, 255, 255, 0.045);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  box-shadow: 
+    0 10px 40px rgba(0, 0, 0, 0.6),
+    inset 0 1px 1px rgba(255, 255, 255, 0.08);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
+}
+
+.liquid-glass:hover {
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.7),
+    0 0 25px rgba(255, 255, 255, 0.03),
+    inset 0 1px 1px rgba(255, 255, 255, 0.15);
+}
+
+/* Premium Glow System */
+.glow-orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(140px);
+  pointer-events: none;
+  z-index: 0;
+  transition: background 1.5s cubic-bezier(0.16, 1, 0.3, 1), transform 1.5s ease;
+  opacity: 0.85;
+}
+
+/* Slow organic drift animations for background mesh */
+@keyframes drift-orb-1 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(6vw, -8vh) scale(1.15);
+  }
+}
+@keyframes drift-orb-2 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1.1);
+  }
+  50% {
+    transform: translate(-5vw, 6vh) scale(0.9);
+  }
+}
+
+.glow-1 {
+  width: 48vw;
+  height: 48vw;
+  top: -10vw;
+  left: -10vw;
+  background: var(--glow-1);
+  animation: drift-orb-1 16s ease-in-out infinite alternate;
+}
+
+.glow-2 {
+  width: 52vw;
+  height: 52vw;
+  bottom: -10vw;
+  right: -10vw;
+  background: var(--glow-2);
+  animation: drift-orb-2 20s ease-in-out infinite alternate;
+}
+
+/* Custom Interactive Cursor (Desktop Only) */
+.custom-cursor {
+  width: 8px;
+  height: 8px;
+  background: #ffffff;
+  border-radius: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transition: width 0.2s, height 0.2s, background-color 0.2s;
+}
+
+.cursor-follower {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9998;
+  transition: transform 0.08s ease-out, width 0.3s, height 0.3s, background-color 0.3s, border-color 0.3s;
+}
+
+/* Cursor Hover states */
+.cursor-hover .custom-cursor {
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.cursor-hover .cursor-follower {
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+/* Typography Gradient */
+.text-gradient {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Text glow */
+.text-glow {
+  text-shadow: 0 0 35px rgba(255, 255, 255, 0.25);
+}
+
+/* Grid overlay background */
+.grid-bg {
+  position: fixed;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 80px 80px;
+  background-position: center center;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Noise overlay */
+.noise-bg {
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Standard Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(2deg);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Layout Utilities */
+.chapter-container {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 8vw 6vw;
+  z-index: 10;
+}
+
+/* Lenis smooth scrolling configuration */
+html.lenis {
+  height: auto;
+}
+
+.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* ==========================================
+   TAILWIND BRIDGE SYSTEM (VANILLA CSS WRAPPER)
+   ========================================== */
+
+/* 1. Display & Flex Utilities */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.flex-row { flex-direction: row; }
+.flex-wrap { flex-wrap: wrap; }
+.items-center { align-items: center; }
+.items-start { align-items: flex-start; }
+.items-end { align-items: flex-end; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.justify-start { justify-content: flex-start; }
+.shrink-0 { flex-shrink: 0; }
+.flex-1 { flex: 1 1 0%; }
+
+/* Grid Layouts */
+.grid { display: grid; }
+.grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+.grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.grid-cols-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+
+/* Sizing Utilities */
+.w-full { width: 100%; }
+.w-11\/12 { width: 91.666667%; }
+.h-full { height: 100%; }
+.min-h-screen { min-height: 100vh; }
+.max-w-xs { max-width: 20rem; }
+.max-w-md { max-width: 28rem; }
+.max-w-lg { max-width: 32rem; }
+.max-w-xl { max-width: 36rem; }
+.max-w-2xl { max-width: 42rem; }
+.max-w-4xl { max-width: 56rem; }
+.max-w-5xl { max-width: 64rem; }
+.max-w-6xl { max-width: 72rem; }
+
+.w-3 { width: 12px; }
+.h-3 { height: 12px; }
+.w-4 { width: 16px; }
+.h-4 { height: 16px; }
+.w-5 { width: 20px; }
+.h-5 { height: 20px; }
+.w-6 { width: 24px; }
+.h-6 { height: 24px; }
+.w-8 { width: 32px; }
+.h-8 { height: 32px; }
+.w-12 { width: 48px; }
+.h-12 { height: 48px; }
+.w-16 { width: 64px; }
+.h-16 { height: 64px; }
+.w-20 { width: 80px; }
+.h-20 { height: 80px; }
+.w-80 { width: 320px; }
+
+/* 2. Spacing Utilities (Gaps, Paddings, Margins) */
+.gap-1 { gap: 4px; }
+.gap-1\.5 { gap: 6px; }
+.gap-2 { gap: 8px; }
+.gap-2\.5 { gap: 10px; }
+.gap-3 { gap: 12px; }
+.gap-4 { gap: 16px; }
+.gap-5 { gap: 20px; }
+.gap-6 { gap: 24px; }
+.gap-8 { gap: 32px; }
+.gap-12 { gap: 48px; }
+.gap-16 { gap: 64px; }
+.gap-24 { gap: 96px; }
+.gap-32 { gap: 128px; }
+
+.p-1 { padding: 4px; }
+.p-2 { padding: 8px; }
+.p-2\.5 { padding: 10px; }
+.p-3 { padding: 12px; }
+.p-3\.5 { padding: 14px; }
+.p-4 { padding: 16px; }
+.p-6 { padding: 24px; }
+.p-8 { padding: 32px; }
+.p-12 { padding: 48px; }
+
+.px-3 { padding-left: 12px; padding-right: 12px; }
+.px-4 { padding-left: 16px; padding-right: 16px; }
+.px-5 { padding-left: 20px; padding-right: 20px; }
+.px-6 { padding-left: 24px; padding-right: 24px; }
+.py-1 { padding-top: 4px; padding-bottom: 4px; }
+.py-2 { padding-top: 8px; padding-bottom: 8px; }
+.py-3 { padding-top: 12px; padding-bottom: 12px; }
+.py-4 { padding-top: 16px; padding-bottom: 16px; }
+
+.pt-1 { padding-top: 4px; }
+.pt-6 { padding-top: 24px; }
+.pt-10 { padding-top: 40px; }
+.pl-8 { padding-left: 32px; }
+
+.mt-1\.5 { margin-top: 6px; }
+.mt-2 { margin-top: 8px; }
+.mt-4 { margin-top: 16px; }
+.mt-6 { margin-top: 24px; }
+.mt-12 { margin-top: 48px; }
+.mb-2 { margin-bottom: 8px; }
+.mb-4 { margin-bottom: 16px; }
+.mb-6 { margin-bottom: 24px; }
+.mr-1\.5 { margin-right: 6px; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+
+/* 3. Positioning & Z-Index */
+.fixed { position: fixed; }
+.absolute { position: absolute; }
+.relative { position: relative; }
+.sticky { position: sticky; }
+
+.top-0 { top: 0; }
+.top-2\.5 { top: 10px; }
+.top-6 { top: 24px; }
+.top-10 { top: 40px; }
+.top-12 { top: 48px; }
+.top-1\/2 { top: 50%; }
+.bottom-6 { bottom: 24px; }
+.bottom-10 { bottom: 40px; }
+.bottom-12 { bottom: 48px; }
+.left-0 { left: 0; }
+.left-2 { left: 8px; }
+.left-4 { left: 16px; }
+.left-6 { left: 24px; }
+.right-0 { right: 0; }
+.right-2 { right: 8px; }
+.right-4 { right: 16px; }
+.right-6 { right: 24px; }
+.z-0 { z-index: 0; }
+.z-10 { z-index: 10; }
+.z-20 { z-index: 20; }
+.z-50 { z-index: 50; }
+
+/* Translate Utilities */
+.-translate-y-1\/2 { transform: translateY(-50%); }
+.-translate-x-1\/2 { transform: translateX(-50%); }
+.top-1\/2.-translate-y-1\/2 { transform: translateY(-50%); }
+.left-1\/2.-translate-x-1\/2 { transform: translateX(-50%); }
+
+
+/* 4. Display, Visibilities & Selects */
+.hidden { display: none; }
+.inline { display: inline; }
+.block { display: block; }
+.inline-block { display: inline-block; }
+.pointer-events-none { pointer-events: none; }
+.pointer-events-auto { pointer-events: auto; }
+.select-none { user-select: none; }
+.overflow-hidden { overflow: hidden; }
+.resize-none { resize: none; }
+
+/* 5. Typography Formatting */
+.text-xs { font-size: 12px; }
+.text-sm { font-size: 14px; }
+.text-base { font-size: 16px; }
+.text-lg { font-size: 18px; }
+.text-xl { font-size: 20px; }
+.text-2xl { font-size: 24px; }
+.text-4xl { font-size: 36px; }
+.text-5xl { font-size: 48px; }
+.text-6xl { font-size: 60px; }
+.text-7xl { font-size: 72px; }
+.text-8xl { font-size: 96px; }
+.text-9xl { font-size: 128px; }
+
+.font-light { font-weight: 300; }
+.font-normal { font-weight: 400; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+.font-extrabold { font-weight: 800; }
+.font-black { font-weight: 900; }
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.tracking-wide { letter-spacing: 0.05em; }
+.tracking-wider { letter-spacing: 0.1em; }
+.tracking-widest { letter-spacing: 0.2em; }
+.leading-none { line-height: 1; }
+.leading-tight { line-height: 1.25; }
+.leading-snug { line-height: 1.375; }
+.leading-relaxed { line-height: 1.625; }
+
+/* 6. Border-Radius and Borders */
+.rounded-sm { border-radius: 2px; }
+.rounded-md { border-radius: 6px; }
+.rounded-lg { border-radius: 8px; }
+.rounded-xl { border-radius: 12px; }
+.rounded-2xl { border-radius: 16px; }
+.rounded-3xl { border-radius: 24px; }
+.rounded-full { border-radius: 9999px; }
+
+.border { border: 1px solid rgba(255, 255, 255, 0.1); }
+.border-t { border-top: 1px solid rgba(255, 255, 255, 0.1); }
+.border-l { border-left: 1px solid rgba(255, 255, 255, 0.1); }
+
+/* Color overrides */
+.border-white\/5 { border-color: rgba(255, 255, 255, 0.05); }
+.border-white\/8 { border-color: rgba(255, 255, 255, 0.08); }
+.border-white\/10 { border-color: rgba(255, 255, 255, 0.1); }
+.border-white\/15 { border-color: rgba(255, 255, 255, 0.15); }
+.border-white\/20 { border-color: rgba(255, 255, 255, 0.2); }
+.border-white\/25 { border-color: rgba(255, 255, 255, 0.25); }
+
+/* 7. Background Transparency Blurs */
+.bg-black\/20 { background-color: rgba(0, 0, 0, 0.2); }
+.bg-black\/40 { background-color: rgba(0, 0, 0, 0.4); }
+.bg-white\/5 { background-color: rgba(255, 255, 255, 0.05); }
+.bg-white\/10 { background-color: rgba(255, 255, 255, 0.1); }
+.bg-white\/20 { background-color: rgba(255, 255, 255, 0.2); }
+.backdrop-blur-md { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+
+/* 8. Shadows & Transitions */
+.shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2); }
+.shadow-xl { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3); }
+.shadow-2xl { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6); }
+
+/* 9. Arbitrary Bracket Layout Support (Crucial layout mappings) */
+.z-\[99\] { z-index: 99; }
+.z-\[90\] { z-index: 90; }
+
+.h-\[260px\] { height: 260px; }
+.h-\[300px\] { height: 300px; }
+.h-\[360px\] { height: 360px; }
+.h-\[380px\] { height: 380px; }
+.h-\[400px\] { height: 400px; }
+.h-\[420px\] { height: 420px; }
+.h-\[460px\] { height: 460px; }
+.h-\[480px\] { height: 480px; }
+
+.w-\[200px\] { width: 200px; }
+.w-\[220px\] { width: 220px; }
+
+.max-w-\[190px\] { max-width: 190px; }
+.max-w-\[210px\] { max-width: 210px; }
+.max-w-\[240px\] { max-width: 240px; }
+.min-w-\[130px\] { min-width: 130px; }
+.min-w-\[140px\] { min-w: 140px; min-width: 140px; }
+.min-w-\[160px\] { min-w: 160px; min-width: 160px; }
+.bottom-\[-6px\] { bottom: -6px; }
+
+.rounded-\[16px\] { border-radius: 16px; }
+.rounded-\[28px\] { border-radius: 28px; }
+.rounded-\[32px\] { border-radius: 32px; }
+.rounded-\[38px\] { border-radius: 38px; }
+
+/* 3D Flip Card specific backface visibility support */
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* ==========================================
+   RESPONSIVE LAYOUT CONFIGURATIONS (MEDIA)
+   ========================================== */
+
+/* Medium Devices (Tablets, 768px+) */
+@media (min-width: 768px) {
+  .md\:flex { display: flex !important; }
+  .md\:grid { display: grid !important; }
+  .md\:block { display: block !important; }
+  .md\:inline { display: inline !important; }
+  
+  .md\:flex-row { flex-direction: row !important; }
+  .md\:w-20 { width: 80px !important; }
+  .md\:h-20 { height: 80px !important; }
+  .md\:w-80 { width: 320px !important; }
+
+  .md\:p-8 { padding: 32px !important; }
+  .md\:p-12 { padding: 48px !important; }
+  .md\:pt-0 { padding-top: 0 !important; }
+  .md\:pl-8 { padding-left: 32px !important; }
+
+  .md\:border-t-0 { border-top: none !important; }
+  .md\:border-l { border-left: 1px solid rgba(255, 255, 255, 0.1) !important; }
+  
+  .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .md\:grid-cols-5 { grid-template-columns: repeat(5, minmax(0, 1fr)) !important; }
+  
+  .md\:h-\[300px\] { height: 300px !important; }
+  .md\:h-\[420px\] { height: 420px !important; }
+  .md\:h-\[460px\] { height: 460px !important; }
+  .md\:h-\[480px\] { height: 480px !important; }
+  .md\:w-\[220px\] { width: 220px !important; }
+  
+  .md\:block { display: block !important; }
+}
+
+/* Large Devices (Desktops, 1024px+) */
+@media (min-width: 1024px) {
+  .lg\:flex { display: flex !important; }
+  .lg\:grid { display: grid !important; }
+  .lg\:flex-row { flex-direction: row !important; }
+  .lg\:flex-row-reverse { flex-direction: row-reverse !important; }
+  
+  .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+  .lg\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+}
+
+/* Small Devices Casing overrides (640px+) */
+@media (min-width: 640px) {
+  .sm\:flex { display: flex !important; }
+  .sm\:inline { display: inline !important; }
+  .sm\:flex-row { flex-direction: row !important; }
+}
+
+
+
