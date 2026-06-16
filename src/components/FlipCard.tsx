@@ -103,6 +103,9 @@ export const FlipCard: React.FC = () => {
   const [flippedIndex, setFlippedIndex] = useState<number | null>(null);
   const [selectedCert, setSelectedCert] = useState<string | null>(null);
 
+  // Shivalik cert is stored portrait but is actually landscape — rotate 90°
+  const isRotated = selectedCert?.includes('cert_shivalik');
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl px-4 relative">
       {ACHIEVEMENTS.map((ach, idx) => {
@@ -274,7 +277,17 @@ export const FlipCard: React.FC = () => {
               <img
                 src={selectedCert}
                 alt="Certificate"
-                className="max-w-full max-h-[80vh] object-contain rounded-lg shadow-inner"
+                className="object-contain rounded-lg shadow-inner"
+                style={isRotated ? {
+                  transform: 'rotate(90deg)',
+                  maxWidth: '80vh',
+                  maxHeight: '80vw',
+                  width: 'auto',
+                  height: 'auto',
+                } : {
+                  maxWidth: '100%',
+                  maxHeight: '80vh',
+                }}
               />
 
               {/* Open in new tab / download option */}

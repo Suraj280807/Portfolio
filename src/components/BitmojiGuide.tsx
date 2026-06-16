@@ -123,7 +123,7 @@ export const BitmojiGuide: React.FC<BitmojiGuideProps> = ({ activeChapter }) => 
         }}
       >
         {/* Fixed Circle Glassmorphic Base */}
-        <div className="absolute inset-0 rounded-full border border-white/10 bg-gradient-to-tr from-white/5 to-white/10 backdrop-blur-md shadow-lg" />
+        <div className="absolute inset-0 rounded-full border border-white/10 bg-gradient-to-tr from-white/5 to-white/10 shadow-lg" />
         
         {/* Soft background radial shine */}
         <div className="absolute inset-0 bg-radial-gradient from-white/10 to-transparent pointer-events-none rounded-full" />
