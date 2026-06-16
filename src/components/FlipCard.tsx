@@ -1,134 +1,6 @@
 import React, { useState } from 'react';
-import { Award, Star, Compass } from 'lucide-react';
-import { motion } from 'framer-motion';
-
-// --- CUSTOM INTERACTIVE SUBCOMPONENTS ---
-
-// 1. NASA Space Apps Challenge Telemetry Visualizer
-const NasaTelemetry: React.FC<{ active: boolean }> = ({ active }) => {
-  return (
-    <div className="w-full flex flex-col gap-2 p-2.5 rounded-xl bg-white/[0.03] border border-white/10 backdrop-blur-md select-none">
-      <div className="flex items-center justify-between">
-        <span className="text-[9px] font-bold text-sky-400 tracking-wider">ORBITAL GEOSPATIAL</span>
-        <span className="text-[9px] font-bold text-white/45">SAT-TERRA</span>
-      </div>
-
-      <div className="flex items-center justify-center py-1 relative">
-        <motion.div
-          animate={active ? { rotate: 360 } : { rotate: 0 }}
-          transition={{ repeat: Infinity, duration: 8, ease: "linear" }}
-          className="w-12 h-12 rounded-full border border-sky-500/20 relative flex items-center justify-center"
-        >
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-sky-400 shadow-[0_0_8px_#38bdf8]" />
-        </motion.div>
-        <div className="absolute flex flex-col items-center">
-          <span className="text-[9px] font-bold text-white leading-none">AEROSOL</span>
-          <span className="text-[8px] font-mono text-sky-300 mt-0.5">0.24 AOD</span>
-        </div>
-      </div>
-
-      <div className="grid grid-cols-2 gap-1.5">
-        <div className="p-1.5 rounded-lg bg-black/40 border border-white/5 flex flex-col items-center">
-          <span className="text-[7px] text-white/40 font-bold uppercase">Solar Wind</span>
-          <span className="text-[11px] font-extrabold text-sky-400">412 km/s</span>
-        </div>
-        <div className="p-1.5 rounded-lg bg-black/40 border border-white/5 flex flex-col items-center">
-          <span className="text-[7px] text-white/40 font-bold uppercase">Data Packet</span>
-          <span className="text-[11px] font-extrabold text-emerald-400">99.8% Sync</span>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-// 2. National-Level Hackathons — 26 Teams, 18 States
-const MVPDeployments: React.FC<{ active: boolean }> = ({ active }) => {
-  return (
-    <div className="w-full flex flex-col gap-2 p-2.5 rounded-xl bg-white/[0.03] border border-white/10 backdrop-blur-md select-none">
-      <div className="flex items-center justify-between">
-        <span className="text-[9px] font-bold text-pink-400 tracking-wider">NATIONAL IMPACT MAP</span>
-        <span className="text-[8px] font-bold text-white/50">INDIA</span>
-      </div>
-
-      <div className="grid grid-cols-2 gap-1.5">
-        <div className="p-1.5 rounded-lg bg-black/40 border border-white/5 flex flex-col items-center gap-0.5">
-          <span className="text-[7px] text-white/40 font-bold uppercase">Teams</span>
-          <span className="text-xl font-extrabold text-pink-400 leading-none">26</span>
-        </div>
-        <div className="p-1.5 rounded-lg bg-black/40 border border-white/5 flex flex-col items-center gap-0.5">
-          <span className="text-[7px] text-white/40 font-bold uppercase">States</span>
-          <span className="text-xl font-extrabold text-purple-400 leading-none">18</span>
-        </div>
-      </div>
-
-      <div className="flex flex-col gap-1.5">
-        {[
-          { label: 'UI Architecture', color: 'text-pink-400', bar: 92 },
-          { label: 'Ideation & Strategy', color: 'text-purple-400', bar: 85 },
-        ].map((item, i) => (
-          <div key={i} className="flex flex-col gap-0.5">
-            <div className="flex justify-between text-[8px]">
-              <span className={`font-bold ${item.color}`}>{item.label}</span>
-              <span className="text-white/40">{item.bar}%</span>
-            </div>
-            <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
-              <div
-                className="h-full bg-gradient-to-r from-pink-500 to-purple-500 rounded-full transition-all duration-700 ease-out"
-                style={{ width: active ? `${item.bar}%` : '0%', transitionDelay: `${i * 150}ms` }}
-              />
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-// 3. Base44 Hackathon Decentralized Dashboard Widget
-const Base44Dashboard: React.FC<{ active: boolean }> = ({ active }) => {
-  return (
-    <div className="w-full flex flex-col gap-2 p-2.5 rounded-xl bg-white/[0.03] border border-white/10 backdrop-blur-md select-none">
-      <div className="flex items-center justify-between">
-        <span className="text-[8px] font-bold text-amber-400 tracking-wider">CAMPUS DECENTRAL NODE</span>
-        <div className="flex items-center gap-1">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-          <span className="text-[8px] font-bold text-emerald-400 uppercase">Active</span>
-        </div>
-      </div>
-
-      <div className="grid grid-cols-2 gap-1.5">
-        <div className="p-1.5 rounded-lg bg-black/40 border border-white/5 flex flex-col justify-center gap-0.5">
-          <span className="text-[7px] text-white/40 font-bold uppercase">Tx Throughput</span>
-          <span className="text-[11px] font-extrabold text-white">4.2 GB/s</span>
-        </div>
-        <div className="p-1.5 rounded-lg bg-black/40 border border-white/5 flex flex-col justify-center gap-0.5">
-          <span className="text-[7px] text-white/40 font-bold uppercase">Consensus</span>
-          <span className="text-[11px] font-extrabold text-sky-400">99.8%</span>
-        </div>
-      </div>
-
-      <div className="flex flex-col gap-1">
-        <div className="flex items-end justify-between text-[7px] text-white/40 font-bold uppercase">
-          <span>Shard Utilization</span>
-          <span className="text-white/60">0.8ms Ping</span>
-        </div>
-        <div className="flex items-end gap-1 h-8 w-full">
-          {[35, 75, 50, 95, 60, 85, 45, 90, 55, 80].map((h, i) => (
-            <div
-              key={i}
-              className="w-full h-full bg-white/5 rounded-sm relative overflow-hidden"
-            >
-              <div 
-                className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-amber-500 to-amber-300 rounded-sm transition-all duration-700 ease-out"
-                style={{ height: active ? `${h}%` : '0%', transitionDelay: `${i * 40}ms` }}
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-};
+import { Award, Star, Compass, X, ExternalLink } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // Custom Chess Knight Icon
 const ChessKnight: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
@@ -147,166 +19,100 @@ const ChessKnight: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   </svg>
 );
 
-// 4. Chess Tactics Board & Engine Evaluation Bar
-const ChessTactics: React.FC<{ active: boolean }> = ({ active }) => {
-  return (
-    <div 
-      className="w-full flex flex-col gap-2 p-2.5 rounded-xl border backdrop-blur-md select-none relative overflow-hidden"
-      style={{ backgroundColor: 'rgba(255, 255, 255, 0.02)', borderColor: 'rgba(255, 255, 255, 0.05)' }}
-    >
-      {/* Background Subtle Silhouette */}
-      <div 
-        className="absolute right-[-12px] bottom-[-12px] w-20 h-20 pointer-events-none text-white z-0"
-        style={{ opacity: 0.03 }}
-      >
-        <ChessKnight className="w-full h-full stroke-[1]" />
-      </div>
-
-      <div className="flex items-center justify-between z-10">
-        <span className="text-[9px] font-bold text-white/50 tracking-wider">TACTICAL COMBINATION</span>
-        <span className="text-[8px] font-mono text-white/40">EVAL: +3.2</span>
-      </div>
-
-      <div className="flex gap-2 items-stretch h-20 z-10">
-        {/* Chess Grid (4x4) */}
-        <div 
-          className="grid grid-cols-4 gap-0.5 p-0.5 border rounded-md flex-1"
-          style={{ backgroundColor: 'rgba(255, 255, 255, 0.01)', borderColor: 'rgba(255, 255, 255, 0.05)' }}
-        >
-          {Array.from({ length: 16 }).map((_, i) => {
-            const row = Math.floor(i / 4);
-            const col = i % 4;
-            const isDark = (row + col) % 2 === 1;
-            
-            const isStart = i === 12; // Bottom left (d4)
-            const isMid = i === 9;   // Middle
-            const isEnd = i === 1;    // Top right (e6)
-            
-            return (
-              <div
-                key={i}
-                className="rounded-sm relative flex items-center justify-center"
-                style={{ backgroundColor: isDark ? 'rgba(255, 255, 255, 0.02)' : 'transparent' }}
-              >
-                {isStart && (
-                  <motion.div
-                    animate={active ? { scale: [1, 1.25, 1], opacity: [0.7, 1, 0.7] } : {}}
-                    transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-                    className="w-1.5 h-1.5 rounded-full bg-white/60 shadow-[0_0_6px_#fff]"
-                  />
-                )}
-                {isEnd && (
-                  <motion.div
-                    animate={active ? { scale: [1, 1.35, 1], opacity: [0.8, 1, 0.8] } : {}}
-                    transition={{ repeat: Infinity, duration: 2, ease: "easeInOut", delay: 0.6 }}
-                    className="w-1.5 h-1.5 rounded-full bg-white shadow-[0_0_8px_#fff]"
-                  />
-                )}
-                {isMid && (
-                  <div className="w-1 h-1 rounded-full bg-white/20" />
-                )}
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Engine Evaluation Bar */}
-        <div 
-          className="w-3.5 border rounded flex flex-col justify-end relative overflow-hidden"
-          style={{ backgroundColor: 'rgba(255, 255, 255, 0.02)', borderColor: 'rgba(255, 255, 255, 0.05)' }}
-        >
-          <motion.div
-            className="w-full bg-white/80 rounded-b"
-            initial={{ height: "50%" }}
-            animate={active ? { height: "76%" } : { height: "50%" }}
-            transition={{ type: "spring", stiffness: 90, damping: 14 }}
-          />
-          <div className="absolute inset-x-0 top-0.5 text-center text-[7px] font-bold text-white/50 z-10 font-mono">
-            +3.2
-          </div>
-        </div>
-      </div>
-
-      {/* Strategic Skills */}
-      <div className="grid grid-cols-2 gap-1 w-full z-10">
-        {[
-          'Strategic Thinking',
-          'Decision Making',
-          'Pattern Recognition',
-          'Competitive Mindset'
-        ].map((skill, i) => (
-          <div 
-            key={i} 
-            className="px-1.5 py-0.5 rounded border text-[8px] font-bold text-white/60 tracking-tight text-center"
-            style={{ backgroundColor: 'rgba(255, 255, 255, 0.02)', borderColor: 'rgba(255, 255, 255, 0.05)' }}
-          >
-            {skill}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-// --- DATA CONFIGURATION ---
-
 interface Achievement {
   title: string;
   category: string;
   backTitle: string;
-  metrics: string;
+  summaryPoints: string[];
+  issuer: string;
+  date: string;
+  signatory: string | null;
+  certUrl: string | null;
   icon: React.ReactNode;
-  visualType: 'nasa' | 'national' | 'base44' | 'chess';
+  dotColor: string;
 }
 
 const ACHIEVEMENTS: Achievement[] = [
   {
-    title: "Base44 Campus Hackathon Winner",
-    category: "1ST PLACE WINNER",
-    backTitle: "Base44 Hackathon",
-    metrics: "Built under 24 hours with full tech stack integration.",
+    title: "Base44 Hackathon",
+    category: "CERTIFICATE OF PARTICIPATION",
+    backTitle: "Base 44 Hackathon",
+    summaryPoints: [
+      "Participated in the intensive hackathon as part of team 'codestorm'.",
+      "Successfully developed and deployed a custom software project using the Base44 platform.",
+      "Demonstrated rapid problem solving and full-stack technical implementation."
+    ],
+    issuer: "NxtWave Institute of Advanced Technologies",
+    date: "November 28, 2025",
+    signatory: "Elsa Welshofer (Global Head of Education for Base44)",
+    certUrl: "/cert_base44.png",
     icon: <Award className="w-8 h-8 text-amber-400" />,
-    visualType: 'base44'
+    dotColor: "#fbbf24"
   },
   {
     title: "NASA Space Apps Challenge",
-    category: "GLOBAL COMPETITION",
-    backTitle: "NASA Space Apps",
-    metrics: "Top-tier regional design showcase & data modeling.",
+    category: "GALACTIC PROBLEM SOLVER",
+    backTitle: "NASA Space Apps Challenge",
+    summaryPoints: [
+      "Honored as a Galactic Problem Solver in the NASA Space Apps global challenge.",
+      "Collaborated on engineering efforts to solve complex geospatial and space challenges.",
+      "Contributed to data modeling and visual interface design schemas."
+    ],
+    issuer: "NASA International Space Apps Challenge",
+    date: "October 4-5, 2025",
+    signatory: "Dr. Keith Gaddis (Program Scientist, NASA)",
+    certUrl: "/cert_nasa.png",
     icon: <Compass className="w-8 h-8 text-sky-400" />,
-    visualType: 'nasa'
+    dotColor: "#38bdf8"
   },
   {
-    title: "National-Level Hackathons",
-    category: "ELITE HACKATHONS",
-    backTitle: "National Finalist",
-    metrics: "Major contribution in UI design & core product ideas.",
+    title: "36-Hour Hackathon",
+    category: "CERTIFICATE OF PARTICIPATION",
+    backTitle: "SCE 36-Hour Hackathon",
+    summaryPoints: [
+      "Represented Sanjay Ghodawat University in the 36-Hour Hackathon event.",
+      "Demonstrated outstanding innovation, enthusiasm, and technical excellence.",
+      "Collaborated with developers for rapid prototyping, coding, and code deployment."
+    ],
+    issuer: "Shivalik College of Engineering",
+    date: "April 16-17, 2026",
+    signatory: "Associate Dean CBII, Dean Academics & Director SCE",
+    certUrl: "/cert_shivalik.jpg",
     icon: <Star className="w-8 h-8 text-pink-400" />,
-    visualType: 'national'
+    dotColor: "#fb7185"
   },
   {
     title: "Chess Championship Runner-Up",
     category: "SCHOOL CHAMPIONSHIP",
     backTitle: "♟️ Chess Championship",
-    metrics: "Secured 2nd place in the school-wide chess championship, competing against students across multiple grades. Developed strategic thinking, long-term planning, pattern recognition, decision-making under pressure, and competitive problem-solving skills.",
+    summaryPoints: [
+      "Secured second place in the school-wide chess tournament.",
+      "Developed advanced strategic planning and pattern recognition capabilities.",
+      "Applied tactical decision-making and cognitive focus under strict time controls."
+    ],
+    issuer: "School Chess Association",
+    date: "Annual Tournament",
+    signatory: null,
+    certUrl: null,
     icon: <ChessKnight className="w-8 h-8 text-white/90" />,
-    visualType: 'chess'
+    dotColor: "#ffffff"
   }
 ];
 
 export const FlipCard: React.FC = () => {
   const [flippedIndex, setFlippedIndex] = useState<number | null>(null);
+  const [selectedCert, setSelectedCert] = useState<string | null>(null);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-6xl px-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl px-4 relative">
       {ACHIEVEMENTS.map((ach, idx) => {
         const isFlipped = flippedIndex === idx;
-        const isChess = ach.visualType === 'chess';
+        const isChess = ach.title.includes('Chess');
 
         return (
           <div
             key={idx}
-            className="h-[360px] cursor-pointer relative"
+            className="h-[440px] cursor-pointer relative"
             style={{ perspective: '1200px' }}
             onMouseEnter={() => setFlippedIndex(idx)}
             onMouseLeave={() => setFlippedIndex(null)}
@@ -357,10 +163,10 @@ export const FlipCard: React.FC = () => {
                 </div>
 
                 <div className="flex flex-col gap-3 z-10 w-full">
-                  <h3 className="text-xl font-semibold leading-snug text-white/90">
+                  <h3 className="text-2xl font-bold tracking-tight text-white/95">
                     {ach.title}
                   </h3>
-                  <div className="flex items-center gap-1 text-[11px] font-bold text-white/50 group-hover:text-white transition-colors">
+                  <div className="flex items-center gap-1 text-xs font-bold text-white/50 group-hover:text-white transition-colors">
                     Hover or tap to inspect →
                   </div>
                 </div>
@@ -368,7 +174,7 @@ export const FlipCard: React.FC = () => {
 
               {/* Back Side */}
               <div
-                className="absolute inset-0 w-full h-full liquid-glass p-4 flex flex-col gap-2 items-start backface-hidden overflow-hidden"
+                className="absolute inset-0 w-full h-full liquid-glass p-8 flex flex-col justify-between items-start backface-hidden overflow-hidden"
                 style={{
                   backfaceVisibility: 'hidden',
                   transform: 'rotateY(180deg)',
@@ -381,35 +187,110 @@ export const FlipCard: React.FC = () => {
                   transition: 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)'
                 }}
               >
-                {/* Header */}
-                <div className="w-full flex flex-col gap-0.5 shrink-0">
+                <div className="w-full flex flex-col gap-1 shrink-0">
                   <span className="text-[9px] tracking-[0.2em] font-bold text-white/30 uppercase">
-                    IMPACT & METRICS
+                    {ach.category}
                   </span>
-                  <h4 className="text-sm font-semibold text-white leading-tight">
+                  <h4 className="text-base font-bold text-white leading-tight">
                     {ach.backTitle}
                   </h4>
                 </div>
 
-                {/* DYNAMIC VISUAL WIDGET — flex-1 so it fills remaining space without bursting */}
-                <div className="w-full flex-1 min-h-0 flex items-center">
-                  {ach.visualType === 'nasa' && <NasaTelemetry active={isFlipped} />}
-                  {ach.visualType === 'national' && <MVPDeployments active={isFlipped} />}
-                  {ach.visualType === 'base44' && <Base44Dashboard active={isFlipped} />}
-                  {ach.visualType === 'chess' && <ChessTactics active={isFlipped} />}
+                {/* Summary points list container */}
+                <div className="flex flex-col gap-2.5 w-full my-3 flex-1 overflow-y-auto pr-1">
+                  {ach.summaryPoints.map((pt, i) => (
+                    <div key={i} className="flex items-start gap-3 text-[12.5px] text-white/75 font-light leading-relaxed">
+                      <span 
+                        className="w-1.5 h-1.5 rounded-full shrink-0 mt-2" 
+                        style={{ backgroundColor: ach.dotColor }}
+                      />
+                      <span className="text-left">{pt}</span>
+                    </div>
+                  ))}
                 </div>
 
-                {/* Footer */}
-                <div className="w-full pt-2 border-t border-white/5 shrink-0">
-                  <span className="text-[10px] font-medium text-white/70 leading-snug">
-                    {ach.metrics}
-                  </span>
+                <div className="w-full flex flex-col gap-1 text-[11px] text-white/50 border-t border-white/5 pt-3">
+                  <div>
+                    <strong className="text-white/60">Issued by:</strong> {ach.issuer}
+                  </div>
+                  <div>
+                    <strong className="text-white/60">Date:</strong> {ach.date}
+                  </div>
+                  {ach.signatory && (
+                    <div className="truncate" title={ach.signatory}>
+                      <strong className="text-white/60">Signatory:</strong> {ach.signatory}
+                    </div>
+                  )}
                 </div>
+
+                {ach.certUrl ? (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedCert(ach.certUrl);
+                    }}
+                    className="w-full mt-4 py-2.5 rounded-xl bg-white text-black font-bold text-xs hover:bg-white/95 active:scale-95 transition-all text-center flex items-center justify-center gap-1 cursor-pointer pointer-events-auto shadow-md"
+                  >
+                    View Certificate
+                  </button>
+                ) : (
+                  <div className="w-full mt-4 py-2.5 rounded-xl bg-white/5 text-white/40 text-xs font-semibold text-center border border-white/5 cursor-default select-none">
+                    No Digital Copy
+                  </div>
+                )}
               </div>
             </div>
           </div>
         );
       })}
+
+      {/* Modal for viewing certificates */}
+      <AnimatePresence>
+        {selectedCert && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/85 backdrop-blur-md z-[999] flex items-center justify-center p-4 cursor-zoom-out"
+            onClick={() => setSelectedCert(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.9, y: 20 }}
+              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+              className="relative max-w-5xl max-h-[85vh] bg-black/40 border border-white/10 rounded-2xl p-2 shadow-2xl flex items-center justify-center cursor-default"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setSelectedCert(null)}
+                className="absolute -top-12 right-0 w-10 h-10 rounded-full bg-white/10 border border-white/15 text-white hover:bg-white/20 active:scale-95 transition-all flex items-center justify-center cursor-pointer shadow-lg"
+              >
+                <X size={20} />
+              </button>
+
+              {/* Certificate Image */}
+              <img
+                src={selectedCert}
+                alt="Certificate"
+                className="max-w-full max-h-[80vh] object-contain rounded-lg shadow-inner"
+              />
+
+              {/* Open in new tab / download option */}
+              <a
+                href={selectedCert}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute -bottom-12 left-1/2 -translate-x-1/2 px-4 py-2 bg-white/15 hover:bg-white/20 border border-white/15 rounded-xl text-xs font-semibold text-white backdrop-blur-md active:scale-95 transition-all flex items-center gap-1.5 shadow-lg"
+              >
+                <ExternalLink size={13} />
+                Open Original in New Tab
+              </a>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

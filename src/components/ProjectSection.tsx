@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Shield, Calendar, UserCheck, Heart, Sun, Thermometer, Wind, CheckCircle2, TrendingUp, Zap, ArrowRight, BookOpen } from 'lucide-react';
+import { Shield, Calendar, UserCheck, Sun, Thermometer, CheckCircle2, Zap, ArrowRight, BookOpen } from 'lucide-react';
 import { ProjectStoryPanel } from './ProjectStoryPanel';
 import type { ProjectStory } from './ProjectStoryPanel';
 
@@ -232,66 +232,6 @@ export const ProjectSection: React.FC = () => {
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none" />
               </motion.div>
-
-              {/* Floating Widgets */}
-              <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-                className="absolute z-20 pointer-events-none flex items-center gap-3.5 p-4 rounded-2xl border border-white/10"
-                style={{
-                  top: '-16px',
-                  left: '-24px',
-                  background: 'rgba(15, 12, 30, 0.65)',
-                  backdropFilter: 'blur(20px)',
-                  WebkitBackdropFilter: 'blur(20px)',
-                  boxShadow: `0 12px 36px -8px rgba(129, 140, 248, 0.15), inset 0 1px 1px rgba(255,255,255,0.08)`,
-                }}
-              >
-                <div style={{
-                  width: '36px', height: '36px', borderRadius: '50%',
-                  background: 'rgba(236, 72, 153, 0.15)',
-                  border: '1px solid rgba(236, 72, 153, 0.25)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center'
-                }}>
-                  <Heart className="w-4 h-4 text-pink-400" />
-                </div>
-                <div className="flex flex-col gap-0.5">
-                  <span style={{ fontSize: '9px', fontWeight: 700, letterSpacing: '0.12em', color: 'rgba(255,255,255,0.45)' }}>
-                    APPOINTMENT SECURED
-                  </span>
-                  <span style={{ fontSize: '11px', fontWeight: 600, color: '#f8fafc' }}>
-                    Dr. Sarah (Vet Surgeon)
-                  </span>
-                </div>
-              </motion.div>
-
-              <motion.div
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-                className="absolute flex flex-col gap-2.5 p-4 rounded-2xl border border-white/10 z-20 pointer-events-none min-w-[170px]"
-                style={{
-                  bottom: '-16px',
-                  right: '-24px',
-                  background: 'rgba(15, 12, 30, 0.65)',
-                  backdropFilter: 'blur(20px)',
-                  WebkitBackdropFilter: 'blur(20px)',
-                  boxShadow: `0 12px 36px -8px rgba(129, 140, 248, 0.15), inset 0 1px 1px rgba(255,255,255,0.08)`,
-                }}
-              >
-                <span style={{ fontSize: '9px', fontWeight: 700, letterSpacing: '0.12em', color: 'rgba(255,255,255,0.45)' }}>
-                  HEALTH SCORE
-                </span>
-                <div className="flex items-baseline gap-2">
-                  <span className="text-2xl font-bold text-indigo-400">98%</span>
-                  <span className="text-[10px] text-teal-400 font-bold">Excellent (+3.4%)</span>
-                </div>
-                <div className="flex items-end gap-1 h-6 w-full pt-1.5">
-                  <div className="h-[40%] w-full bg-white/10 rounded-sm" />
-                  <div className="h-[60%] w-full bg-white/10 rounded-sm" />
-                  <div className="h-[75%] w-full bg-white/20 rounded-sm" />
-                  <div className="h-[95%] w-full bg-indigo-500 rounded-sm shadow-[0_0_8px_rgba(99,102,241,0.5)]" />
-                </div>
-              </motion.div>
             </div>
 
             {/* Screen Selector Pills */}
@@ -403,78 +343,6 @@ export const ProjectSection: React.FC = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none" />
               </motion.div>
-
-              <motion.div
-                animate={{ x: [-5, 5, -5] }}
-                transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
-                className="absolute flex flex-col gap-2.5 p-4 rounded-2xl border border-white/10 z-20 pointer-events-none"
-                style={{
-                  top: '16px',
-                  right: '-32px',
-                  background: 'rgba(10, 20, 15, 0.65)',
-                  backdropFilter: 'blur(20px)',
-                  WebkitBackdropFilter: 'blur(20px)',
-                  boxShadow: `0 12px 36px -8px rgba(52, 211, 153, 0.15), inset 0 1px 1px rgba(255,255,255,0.08)`,
-                }}
-              >
-                <span style={{ fontSize: '9px', fontWeight: 700, letterSpacing: '0.12em', color: 'rgba(255,255,255,0.45)' }}>
-                  ENV TELEMETRY
-                </span>
-                <div className="flex gap-4">
-                  <div className="flex items-center gap-1.5">
-                    <div style={{
-                      width: '24px', height: '24px', borderRadius: '50%',
-                      background: 'rgba(249, 115, 22, 0.12)',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center'
-                    }}>
-                      <Thermometer className="w-3.5 h-3.5 text-orange-400" />
-                    </div>
-                    <span style={{ fontSize: '11px', fontWeight: 600, color: '#f8fafc' }}>24°C</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <div style={{
-                      width: '24px', height: '24px', borderRadius: '50%',
-                      background: 'rgba(56, 189, 248, 0.12)',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center'
-                    }}>
-                      <Wind className="w-3.5 h-3.5 text-sky-400" />
-                    </div>
-                    <span style={{ fontSize: '11px', fontWeight: 600, color: '#f8fafc' }}>12km/h</span>
-                  </div>
-                </div>
-              </motion.div>
-
-              <motion.div
-                animate={{ x: [5, -5, 5] }}
-                transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
-                className="absolute flex items-center gap-3.5 p-4 rounded-2xl border border-white/10 z-20 pointer-events-none max-w-[220px]"
-                style={{
-                  bottom: '16px',
-                  left: '-32px',
-                  background: 'rgba(10, 20, 15, 0.65)',
-                  backdropFilter: 'blur(20px)',
-                  WebkitBackdropFilter: 'blur(20px)',
-                  boxShadow: `0 12px 36px -8px rgba(52, 211, 153, 0.15), inset 0 1px 1px rgba(255,255,255,0.08)`,
-                }}
-              >
-                <div style={{
-                  width: '32px', height: '32px', borderRadius: '50%',
-                  background: 'rgba(52, 211, 153, 0.15)',
-                  border: '1px solid rgba(52, 211, 153, 0.25)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  flexShrink: 0
-                }}>
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                </div>
-                <div className="flex flex-col gap-0.5">
-                  <span style={{ fontSize: '9px', fontWeight: 700, letterSpacing: '0.12em', color: 'rgba(255,255,255,0.45)' }}>
-                    BOTANICAL HEALTH ENGINE
-                  </span>
-                  <span style={{ fontSize: '10.5px', fontWeight: 500, color: 'rgba(255,255,255,0.85)', lineHeight: '1.4' }}>
-                    Soil moisture optimal for Hydro-Tomato crops.
-                  </span>
-                </div>
-              </motion.div>
             </div>
           </div>
         </div>
@@ -564,62 +432,6 @@ export const ProjectSection: React.FC = () => {
                   </AnimatePresence>
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none rounded-[32px] z-20" />
-              </motion.div>
-
-              {/* Floating Widgets */}
-              <motion.div
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
-                className="absolute flex flex-col gap-2 p-4 rounded-2xl border border-white/10 z-20 pointer-events-none min-w-[145px]"
-                style={{
-                  top: '20%',
-                  left: '-48px',
-                  background: 'rgba(28, 12, 16, 0.65)',
-                  backdropFilter: 'blur(20px)',
-                  WebkitBackdropFilter: 'blur(20px)',
-                  boxShadow: `0 12px 36px -8px rgba(251, 113, 133, 0.15), inset 0 1px 1px rgba(255,255,255,0.08)`,
-                }}
-              >
-                <div className="flex items-center gap-1.5">
-                  <div style={{
-                    width: '20px', height: '20px', borderRadius: '50%',
-                    background: 'rgba(249, 115, 22, 0.12)',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center'
-                  }}>
-                    <TrendingUp className="w-3 h-3 text-orange-400" />
-                  </div>
-                  <span style={{ fontSize: '9px', fontWeight: 700, letterSpacing: '0.12em', color: 'rgba(255,255,255,0.45)' }}>
-                    ACTIVE STREAK
-                  </span>
-                </div>
-                <span style={{ fontSize: '18px', fontWeight: 800, color: '#f8fafc', marginTop: '2px' }}>12 Days</span>
-                <span style={{ fontSize: '9px', color: 'rgba(255,255,255,0.45)', fontWeight: 500 }}>Top 5% of users.</span>
-              </motion.div>
-
-              <motion.div
-                animate={{ y: [0, 8, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
-                className="absolute flex flex-col gap-2 p-4 rounded-2xl border border-white/10 z-20 pointer-events-none min-w-[140px]"
-                style={{
-                  bottom: '15%',
-                  right: '-48px',
-                  background: 'rgba(28, 12, 16, 0.65)',
-                  backdropFilter: 'blur(20px)',
-                  WebkitBackdropFilter: 'blur(20px)',
-                  boxShadow: `0 12px 36px -8px rgba(251, 113, 133, 0.15), inset 0 1px 1px rgba(255,255,255,0.08)`,
-                }}
-              >
-                <span style={{ fontSize: '9px', fontWeight: 700, letterSpacing: '0.12em', color: 'rgba(255,255,255,0.45)' }}>
-                  COMPLETION
-                </span>
-                <div className="flex items-baseline gap-1.5 mt-0.5">
-                  <span style={{ fontSize: '18px', fontWeight: 800, color: '#fb7185' }}>92%</span>
-                  <span style={{ fontSize: '9px', color: 'rgba(255,255,255,0.45)', fontWeight: 500 }}>this week</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '2px' }}>
-                  <div className="w-4 h-4 rounded-full border border-white/10 border-t-rose-400 animate-spin" style={{ animationDuration: '1.2s' }} />
-                  <span style={{ fontSize: '8.5px', fontWeight: 600, color: 'rgba(255,255,255,0.35)', letterSpacing: '0.05em' }}>SYNCED</span>
-                </div>
               </motion.div>
             </div>
 

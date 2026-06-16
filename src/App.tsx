@@ -296,7 +296,7 @@ export default function App() {
             <span className="text-[11px] font-bold tracking-[0.35em] text-white/50 uppercase">
               CREATIVE ENGINEER SHOWCASE
             </span>
-            <h1 className="text-6xl sm:text-8xl md:text-9xl font-black tracking-tight text-white leading-none text-glow select-none">
+            <h1 className="text-5xl sm:text-7xl md:text-8xl font-black tracking-tight text-white leading-none text-glow select-none">
               SURAJSING
               <span className="block text-gradient">PATIL</span>
             </h1>
