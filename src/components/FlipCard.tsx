@@ -279,7 +279,7 @@ export const FlipCard: React.FC = () => {
                 alt="Certificate"
                 className="object-contain rounded-lg shadow-inner"
                 style={isRotated ? {
-                  transform: 'rotate(90deg)',
+                  transform: 'rotate(-90deg)',
                   maxWidth: '80vh',
                   maxHeight: '80vw',
                   width: 'auto',
